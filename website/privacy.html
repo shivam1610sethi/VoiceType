@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy – VoiceType</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #fff;
+            color: #000;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #737373;
+            text-decoration: none;
+            font-size: 0.875rem;
+            margin-bottom: 3rem;
+        }
+
+        .back-link:hover {
+            color: #000;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+        }
+
+        .updated {
+            color: #737373;
+            font-size: 0.875rem;
+            margin-bottom: 3rem;
+        }
+
+        h2 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            color: #525252;
+            margin-bottom: 1rem;
+        }
+
+        ul {
+            color: #525252;
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        strong {
+            color: #000;
+        }
+
+        .highlight {
+            background: #f5f5f5;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+        }
+
+        .highlight p {
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5M12 19l-7-7 7-7" />
+            </svg>
+            Back to VoiceType
+        </a>
+
+        <h1>Privacy Policy</h1>
+        <p class="updated">Last updated: January 2025</p>
+
+        <div class="highlight">
+            <p><strong>TL;DR:</strong> VoiceType processes all audio locally on your Mac. We don't collect, store, or
+                transmit any of your voice data or transcriptions. Ever.</p>
+        </div>
+
+        <h2>What we collect</h2>
+        <p><strong>Nothing.</strong> VoiceType does not collect any personal information, usage data, or analytics.
+            There are no accounts, no telemetry, and no network requests to our servers.</p>
+
+        <h2>How speech recognition works</h2>
+        <p>VoiceType uses WhisperKit, an on-device AI model, to convert your voice to text. This means:</p>
+        <ul>
+            <li>All audio processing happens entirely on your Mac</li>
+            <li>Your voice recordings are never sent to any server</li>
+            <li>Transcriptions are never stored or logged</li>
+            <li>The app works completely offline after initial model download</li>
+        </ul>
+
+        <h2>Permissions we require</h2>
+        <p>VoiceType needs two permissions to function:</p>
+        <ul>
+            <li><strong>Microphone Access:</strong> To hear your voice for transcription. Audio is processed in
+                real-time and immediately discarded.</li>
+            <li><strong>Accessibility Access:</strong> To detect the Fn key globally and insert text at your cursor
+                position.</li>
+        </ul>
+
+        <h2>Network usage</h2>
+        <p>The only network request VoiceType makes is to download the Whisper AI model on first launch (~150MB). After
+            that, the app works entirely offline.</p>
+
+        <h2>Data storage</h2>
+        <p>VoiceType stores only your preferences (like model selection) locally using macOS's standard UserDefaults. No
+            audio, transcriptions, or personal data is ever stored.</p>
+
+        <h2>Third-party services</h2>
+        <p>VoiceType does not use any third-party analytics, advertising, or tracking services.</p>
+
+        <h2>Open source</h2>
+        <p>VoiceType is open source. You can review the code yourself to verify our privacy practices:</p>
+        <p><a href="https://github.com/yourusername/VoiceType"
+                style="color: #000;">github.com/yourusername/VoiceType</a></p>
+
+        <h2>Contact</h2>
+        <p>Questions about privacy? Open an issue on GitHub or email us at privacy@voicetype.app</p>
+    </div>
+</body>
+
+</html>
