@@ -252,9 +252,16 @@ struct ModelLoadingRowView: View {
             VStack(alignment: .leading, spacing: 3) {
                 Text("AI Model")
                     .font(.system(size: 14, weight: .semibold))
-                Text(recognizer.isInitializing ? recognizer.initializationProgress : "For speech recognition")
-                    .font(.system(size: 12))
-                    .foregroundColor(.secondary)
+                if let error = recognizer.initializationError {
+                    Text(error)
+                        .font(.system(size: 11))
+                        .foregroundColor(.red)
+                        .lineLimit(2)
+                } else {
+                    Text(recognizer.isInitializing ? recognizer.initializationProgress : "For speech recognition")
+                        .font(.system(size: 12))
+                        .foregroundColor(.secondary)
+                }
             }
             
             Spacer()
@@ -272,10 +279,27 @@ struct ModelLoadingRowView: View {
             } else if recognizer.isInitializing {
                 ProgressView()
                     .scaleEffect(0.8)
-            } else if let error = recognizer.initializationError {
-                Text("Error")
-                    .font(.system(size: 12, weight: .medium))
-                    .foregroundColor(.red)
+            } else if recognizer.initializationError != nil {
+                Button(action: {
+                    Task {
+                        await recognizer.initialize()
+                    }
+                }) {
+                    HStack(spacing: 4) {
+                        Image(systemName: "arrow.clockwise")
+                            .font(.system(size: 12))
+                        Text("Retry")
+                            .font(.system(size: 12, weight: .medium))
+                    }
+                    .foregroundColor(.white)
+                    .padding(.horizontal, 12)
+                    .padding(.vertical, 6)
+                    .background(
+                        RoundedRectangle(cornerRadius: 6)
+                            .fill(Color.purple)
+                    )
+                }
+                .buttonStyle(.plain)
             } else {
                 Text("Waiting...")
                     .font(.system(size: 12))
