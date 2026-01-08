@@ -139,7 +139,7 @@ struct OnboardingView: View {
             .padding(.horizontal, 36)
             .padding(.bottom, 32)
         }
-        .frame(width: 420, height: 560)
+        .frame(width: 380, height: 460)
         .background(Color(NSColor.windowBackgroundColor))
         .onAppear {
             permissionsManager.checkAllPermissions()

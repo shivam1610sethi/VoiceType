@@ -125,14 +125,25 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         )
         
         let window = NSWindow(
-            contentRect: NSRect(x: 0, y: 0, width: 480, height: 620),
+            contentRect: NSRect(x: 0, y: 0, width: 380, height: 460),
             styleMask: [.titled, .closable],
             backing: .buffered,
             defer: false
         )
         window.title = "Welcome to VoiceType"
         window.contentView = NSHostingView(rootView: view)
-        window.center()
+        
+        // Position at bottom center of screen
+        if let screen = NSScreen.main {
+            let screenFrame = screen.visibleFrame
+            let windowFrame = window.frame
+            let x = screenFrame.origin.x + (screenFrame.width - windowFrame.width) / 2
+            let y = screenFrame.origin.y + 80 // 80pt from bottom
+            window.setFrameOrigin(NSPoint(x: x, y: y))
+        } else {
+            window.center()
+        }
+        
         window.isReleasedWhenClosed = false
         window.makeKeyAndOrderFront(nil)
         
