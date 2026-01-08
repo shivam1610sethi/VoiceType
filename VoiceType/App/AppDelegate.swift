@@ -43,6 +43,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         } else {
             showOnboarding()
         }
+        
+        // Listen for requests to show onboarding (e.g. from error states)
+        NotificationCenter.default.addObserver(forName: NSNotification.Name("ShowOnboarding"), object: nil, queue: .main) { [weak self] _ in
+            self?.showOnboarding()
+        }
     }
     
     nonisolated func applicationWillTerminate(_ notification: Notification) {

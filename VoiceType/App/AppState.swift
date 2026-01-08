@@ -112,26 +112,29 @@ class AppState: ObservableObject {
         
         // Check permissions
         guard permissionsManager.microphoneStatus == .granted else {
-            showTemporaryError("Microphone access required")
+            recordingState = .error("Microphone access required")
             return
         }
         
-        // Check model state
-        if !speechRecognizer.isReady {
-            if speechRecognizer.initializationError != nil {
-                // Model failed - show error and retry
-                showTemporaryError("AI model not loaded. Retrying...")
-                Task {
-                    await speechRecognizer.initialize(model: .base)
+        // Check if model is ready
+        // Check if model is ready
+        guard speechRecognizer.isReady else {
+            if speechRecognizer.isInitializing {
+                recordingState = .error("Model still loading... \(speechRecognizer.initializationProgress)")
+            } else if let error = speechRecognizer.initializationError {
+                recordingState = .error("Model error. Check app window.")
+                // Automatically open onboarding/app window if there's an error
+                DispatchQueue.main.async {
+                    self.showOnboarding = true
+                    // Activate app to bring window to front
+                    NSApp.activate(ignoringOtherApps: true)
+                    // NotificationCenter default used in AppDelegate to show window
+                    NotificationCenter.default.post(name: NSNotification.Name("ShowOnboarding"), object: nil)
                 }
-            } else if speechRecognizer.isInitializing {
-                // Model still loading
-                showTemporaryError("AI model loading, please wait...")
             } else {
-                // Model not started - start it
-                showTemporaryError("Starting AI model...")
+                recordingState = .error("Initializing model...")
                 Task {
-                    await speechRecognizer.initialize(model: .base)
+                    await speechRecognizer.initialize()
                 }
             }
             return
@@ -143,19 +146,7 @@ class AppState: ObservableObject {
             print("[AppState] Recording started")
         } catch {
             print("[AppState] Failed to start recording: \(error)")
-            showTemporaryError("Failed to start recording")
-        }
-    }
-    
-    /// Show an error that auto-dismisses after 3 seconds
-    private func showTemporaryError(_ message: String) {
-        recordingState = .error(message)
-        
-        Task {
-            try? await Task.sleep(nanoseconds: 3_000_000_000)
-            if case .error = recordingState {
-                recordingState = .idle
-            }
+            recordingState = .error("Failed to start recording")
         }
     }
     
