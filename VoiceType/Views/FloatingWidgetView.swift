@@ -42,7 +42,7 @@ struct IdlePillView: View {
                         Text("Click or hold")
                             .foregroundColor(.white.opacity(0.8))
                         Text("fn")
-                            .foregroundColor(.pink)
+                            .foregroundColor(.white)
                             .fontWeight(.semibold)
                         Text("to dictate")
                             .foregroundColor(.white.opacity(0.8))
@@ -110,7 +110,7 @@ struct RecordingPillView: View {
                         .frame(width: 28, height: 28)
                     
                     RoundedRectangle(cornerRadius: 3)
-                        .fill(Color.red)
+                        .fill(Color.white)
                         .frame(width: 12, height: 12)
                 }
             }
@@ -192,7 +192,7 @@ struct ErrorPillView: View {
     var body: some View {
         HStack(spacing: 10) {
             Image(systemName: "exclamationmark.triangle.fill")
-                .foregroundColor(.yellow)
+                .foregroundColor(.white.opacity(0.7))
             
             Text(message)
                 .font(.system(size: 12, weight: .medium))
@@ -214,7 +214,7 @@ struct ErrorPillView: View {
         )
         .overlay(
             Capsule()
-                .strokeBorder(Color.yellow.opacity(0.3), lineWidth: 1)
+                .strokeBorder(Color.white.opacity(0.15), lineWidth: 1)
         )
     }
 }
