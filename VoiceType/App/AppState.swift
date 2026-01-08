@@ -112,13 +112,28 @@ class AppState: ObservableObject {
         
         // Check permissions
         guard permissionsManager.microphoneStatus == .granted else {
-            recordingState = .error("Microphone access required")
+            showTemporaryError("Microphone access required")
             return
         }
         
-        // Check if model is ready
-        guard speechRecognizer.isReady else {
-            recordingState = .error("Model still loading, please wait...")
+        // Check model state
+        if !speechRecognizer.isReady {
+            if speechRecognizer.initializationError != nil {
+                // Model failed - show error and retry
+                showTemporaryError("AI model not loaded. Retrying...")
+                Task {
+                    await speechRecognizer.initialize(model: .base)
+                }
+            } else if speechRecognizer.isInitializing {
+                // Model still loading
+                showTemporaryError("AI model loading, please wait...")
+            } else {
+                // Model not started - start it
+                showTemporaryError("Starting AI model...")
+                Task {
+                    await speechRecognizer.initialize(model: .base)
+                }
+            }
             return
         }
         
@@ -128,7 +143,19 @@ class AppState: ObservableObject {
             print("[AppState] Recording started")
         } catch {
             print("[AppState] Failed to start recording: \(error)")
-            recordingState = .error("Failed to start recording")
+            showTemporaryError("Failed to start recording")
+        }
+    }
+    
+    /// Show an error that auto-dismisses after 3 seconds
+    private func showTemporaryError(_ message: String) {
+        recordingState = .error(message)
+        
+        Task {
+            try? await Task.sleep(nanoseconds: 3_000_000_000)
+            if case .error = recordingState {
+                recordingState = .idle
+            }
         }
     }
     
