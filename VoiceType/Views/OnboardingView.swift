@@ -12,134 +12,123 @@ struct OnboardingView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            // Header - Minimal
-            VStack(spacing: 16) {
+            // Header - Minimal & Compact
+            VStack(spacing: 12) {
                 // Icon - Simple black circle with waveform
                 ZStack {
                     Circle()
                         .fill(Color.black)
-                        .frame(width: 72, height: 72)
+                        .frame(width: 56, height: 56)
                     
                     Image(systemName: "waveform")
-                        .font(.system(size: 28, weight: .medium))
+                        .font(.system(size: 22, weight: .medium))
                         .foregroundColor(.white)
                 }
                 
-                VStack(spacing: 6) {
+                VStack(spacing: 4) {
                     Text("VoiceType")
-                        .font(.system(size: 28, weight: .semibold, design: .default))
-                        .tracking(-0.5)
+                        .font(.system(size: 24, weight: .semibold))
+                        .tracking(-0.3)
                     
-                    Text("Voice to text, anywhere on your Mac")
-                        .font(.system(size: 14, weight: .regular))
+                    Text("Voice to text, anywhere")
+                        .font(.system(size: 13))
                         .foregroundColor(.secondary)
                 }
             }
-            .padding(.top, 48)
-            .padding(.bottom, 36)
+            .padding(.top, 28)
+            .padding(.bottom, 20)
             
-            // Setup Steps
-            VStack(spacing: 10) {
-                Text("Setup")
-                    .font(.system(size: 11, weight: .medium))
-                    .foregroundColor(.secondary)
-                    .textCase(.uppercase)
-                    .tracking(1.2)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.horizontal, 4)
-                
-                VStack(spacing: 8) {
-                    // Microphone Permission
-                    MinimalPermissionRow(
-                        icon: "mic",
-                        title: "Microphone",
-                        subtitle: "To hear what you say",
-                        isGranted: permissionsManager.microphoneStatus == .granted,
-                        buttonLabel: "Enable",
-                        action: {
-                            Task {
-                                await permissionsManager.requestMicrophonePermission()
+            // Scrollable content area
+            ScrollView(.vertical, showsIndicators: false) {
+                VStack(spacing: 16) {
+                    // Setup Steps
+                    VStack(spacing: 8) {
+                        // Microphone Permission
+                        CompactPermissionRow(
+                            icon: "mic",
+                            title: "Microphone",
+                            isGranted: permissionsManager.microphoneStatus == .granted,
+                            buttonLabel: "Enable",
+                            action: {
+                                Task {
+                                    await permissionsManager.requestMicrophonePermission()
+                                }
                             }
-                        }
-                    )
+                        )
+                        
+                        // Accessibility Permission
+                        CompactPermissionRow(
+                            icon: "accessibility",
+                            title: "Accessibility",
+                            isGranted: permissionsManager.accessibilityStatus == .granted,
+                            buttonLabel: "Settings",
+                            action: {
+                                permissionsManager.openAccessibilitySettings()
+                            }
+                        )
+                        
+                        // AI Model
+                        CompactModelRow(recognizer: speechRecognizer)
+                    }
                     
-                    // Accessibility Permission
-                    MinimalPermissionRow(
-                        icon: "accessibility",
-                        title: "Accessibility",
-                        subtitle: "To type text and detect the Fn key",
-                        isGranted: permissionsManager.accessibilityStatus == .granted,
-                        buttonLabel: "Open Settings",
-                        action: {
-                            permissionsManager.openAccessibilitySettings()
+                    // Help text for accessibility (only when needed)
+                    if permissionsManager.accessibilityStatus != .granted {
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text("To enable Accessibility:")
+                                .font(.system(size: 11, weight: .medium))
+                            Text("Click Settings → Click + → Select VoiceType.app → Toggle ON")
+                                .font(.system(size: 11))
+                                .foregroundColor(.secondary)
                         }
-                    )
-                    
-                    // AI Model
-                    MinimalModelRow(recognizer: speechRecognizer)
+                        .padding(12)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .background(
+                            RoundedRectangle(cornerRadius: 8)
+                                .fill(Color.black.opacity(0.03))
+                        )
+                    }
                 }
+                .padding(.horizontal, 28)
             }
-            .padding(.horizontal, 36)
+            .frame(maxHeight: .infinity)
             
-            // Help text for accessibility
-            if permissionsManager.accessibilityStatus != .granted {
-                VStack(alignment: .leading, spacing: 6) {
-                    Text("After opening Settings:")
-                        .font(.system(size: 11, weight: .medium))
-                    Text("1. Click + to add VoiceType\n2. Navigate to Applications folder\n3. Select VoiceType.app and toggle ON")
-                        .font(.system(size: 11))
-                        .foregroundColor(.secondary)
-                }
-                .padding(14)
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .background(
-                    RoundedRectangle(cornerRadius: 8)
-                        .stroke(Color.black.opacity(0.1), lineWidth: 1)
-                )
-                .padding(.horizontal, 36)
-                .padding(.top, 12)
-            }
-            
-            Spacer()
-            
-            // Bottom Buttons
-            VStack(spacing: 10) {
-                // Main CTA Button
+            // Bottom Buttons - Fixed
+            VStack(spacing: 8) {
                 Button(action: onComplete) {
-                    HStack(spacing: 8) {
+                    HStack(spacing: 6) {
                         Text("Get Started")
-                            .font(.system(size: 15, weight: .medium))
+                            .font(.system(size: 14, weight: .medium))
                         
                         if canContinue {
                             Image(systemName: "arrow.right")
-                                .font(.system(size: 12, weight: .semibold))
+                                .font(.system(size: 11, weight: .semibold))
                         }
                     }
                     .foregroundColor(canContinue ? .white : .gray)
                     .frame(maxWidth: .infinity)
-                    .padding(.vertical, 14)
+                    .padding(.vertical, 12)
                     .background(
-                        RoundedRectangle(cornerRadius: 10)
+                        RoundedRectangle(cornerRadius: 8)
                             .fill(canContinue ? Color.black : Color.black.opacity(0.1))
                     )
                 }
                 .buttonStyle(.plain)
                 .disabled(!canContinue)
                 
-                // Skip button
                 if !canContinue {
                     Button(action: onComplete) {
-                        Text("Skip for now (limited functionality)")
-                            .font(.system(size: 12))
+                        Text("Skip for now")
+                            .font(.system(size: 11))
                             .foregroundColor(.secondary)
                     }
                     .buttonStyle(.plain)
                 }
             }
-            .padding(.horizontal, 36)
-            .padding(.bottom, 32)
+            .padding(.horizontal, 28)
+            .padding(.bottom, 20)
+            .padding(.top, 12)
         }
-        .frame(width: 380, height: 460)
+        .frame(width: 340, height: 420)
         .background(Color(NSColor.windowBackgroundColor))
         .onAppear {
             permissionsManager.checkAllPermissions()
@@ -150,41 +139,35 @@ struct OnboardingView: View {
     }
 }
 
-// MARK: - Minimal Permission Row
+// MARK: - Compact Permission Row
 
-struct MinimalPermissionRow: View {
+struct CompactPermissionRow: View {
     let icon: String
     let title: String
-    let subtitle: String
     let isGranted: Bool
     let buttonLabel: String
     let action: () -> Void
     
     var body: some View {
-        HStack(spacing: 14) {
+        HStack(spacing: 12) {
             // Icon
             Image(systemName: icon)
-                .font(.system(size: 16, weight: .medium))
+                .font(.system(size: 14, weight: .medium))
                 .foregroundColor(.black)
-                .frame(width: 20)
+                .frame(width: 18)
             
-            // Text
-            VStack(alignment: .leading, spacing: 2) {
-                Text(title)
-                    .font(.system(size: 14, weight: .medium))
-                Text(subtitle)
-                    .font(.system(size: 12))
-                    .foregroundColor(.secondary)
-            }
+            // Title
+            Text(title)
+                .font(.system(size: 13, weight: .medium))
             
             Spacer()
             
             // Status/Action
             if isGranted {
                 Image(systemName: "checkmark")
-                    .font(.system(size: 12, weight: .semibold))
+                    .font(.system(size: 10, weight: .bold))
                     .foregroundColor(.black)
-                    .padding(6)
+                    .padding(5)
                     .background(
                         Circle()
                             .stroke(Color.black, lineWidth: 1.5)
@@ -192,53 +175,52 @@ struct MinimalPermissionRow: View {
             } else {
                 Button(action: action) {
                     Text(buttonLabel)
-                        .font(.system(size: 12, weight: .medium))
+                        .font(.system(size: 11, weight: .medium))
                         .foregroundColor(.white)
-                        .padding(.horizontal, 12)
-                        .padding(.vertical, 6)
+                        .padding(.horizontal, 10)
+                        .padding(.vertical, 5)
                         .background(
-                            RoundedRectangle(cornerRadius: 6)
+                            RoundedRectangle(cornerRadius: 5)
                                 .fill(Color.black)
                         )
                 }
                 .buttonStyle(.plain)
             }
         }
-        .padding(.horizontal, 16)
-        .padding(.vertical, 14)
+        .padding(.horizontal, 14)
+        .padding(.vertical, 12)
         .background(
-            RoundedRectangle(cornerRadius: 10)
+            RoundedRectangle(cornerRadius: 8)
                 .stroke(Color.black.opacity(0.08), lineWidth: 1)
         )
     }
 }
 
-// MARK: - Minimal Model Row
+// MARK: - Compact Model Row
 
-struct MinimalModelRow: View {
+struct CompactModelRow: View {
     @ObservedObject var recognizer: SpeechRecognizer
     
     var body: some View {
-        HStack(spacing: 14) {
+        HStack(spacing: 12) {
             // Icon
             Image(systemName: "cpu")
-                .font(.system(size: 16, weight: .medium))
+                .font(.system(size: 14, weight: .medium))
                 .foregroundColor(.black)
-                .frame(width: 20)
+                .frame(width: 18)
             
             // Text
-            VStack(alignment: .leading, spacing: 2) {
+            VStack(alignment: .leading, spacing: 1) {
                 Text("AI Model")
-                    .font(.system(size: 14, weight: .medium))
+                    .font(.system(size: 13, weight: .medium))
                 
                 if let error = recognizer.initializationError {
-                    Text(error)
-                        .font(.system(size: 11))
+                    Text("Download failed")
+                        .font(.system(size: 10))
                         .foregroundColor(.red)
-                        .lineLimit(2)
-                } else {
-                    Text(recognizer.isInitializing ? recognizer.initializationProgress : "For speech recognition")
-                        .font(.system(size: 12))
+                } else if recognizer.isInitializing {
+                    Text(recognizer.initializationProgress)
+                        .font(.system(size: 10))
                         .foregroundColor(.secondary)
                 }
             }
@@ -248,16 +230,16 @@ struct MinimalModelRow: View {
             // Status
             if recognizer.isReady {
                 Image(systemName: "checkmark")
-                    .font(.system(size: 12, weight: .semibold))
+                    .font(.system(size: 10, weight: .bold))
                     .foregroundColor(.black)
-                    .padding(6)
+                    .padding(5)
                     .background(
                         Circle()
                             .stroke(Color.black, lineWidth: 1.5)
                     )
             } else if recognizer.isInitializing {
                 ProgressView()
-                    .scaleEffect(0.7)
+                    .scaleEffect(0.6)
                     .progressViewStyle(CircularProgressViewStyle(tint: .black))
             } else if recognizer.initializationError != nil {
                 Button(action: {
@@ -265,31 +247,27 @@ struct MinimalModelRow: View {
                         await recognizer.initialize()
                     }
                 }) {
-                    HStack(spacing: 4) {
-                        Image(systemName: "arrow.clockwise")
-                            .font(.system(size: 11, weight: .medium))
-                        Text("Retry")
-                            .font(.system(size: 12, weight: .medium))
-                    }
-                    .foregroundColor(.white)
-                    .padding(.horizontal, 12)
-                    .padding(.vertical, 6)
-                    .background(
-                        RoundedRectangle(cornerRadius: 6)
-                            .fill(Color.black)
-                    )
+                    Text("Retry")
+                        .font(.system(size: 11, weight: .medium))
+                        .foregroundColor(.white)
+                        .padding(.horizontal, 10)
+                        .padding(.vertical, 5)
+                        .background(
+                            RoundedRectangle(cornerRadius: 5)
+                                .fill(Color.black)
+                        )
                 }
                 .buttonStyle(.plain)
             } else {
-                Text("...")
-                    .font(.system(size: 12))
-                    .foregroundColor(.secondary)
+                ProgressView()
+                    .scaleEffect(0.6)
+                    .progressViewStyle(CircularProgressViewStyle(tint: .black))
             }
         }
-        .padding(.horizontal, 16)
-        .padding(.vertical, 14)
+        .padding(.horizontal, 14)
+        .padding(.vertical, 12)
         .background(
-            RoundedRectangle(cornerRadius: 10)
+            RoundedRectangle(cornerRadius: 8)
                 .stroke(Color.black.opacity(0.08), lineWidth: 1)
         )
     }
