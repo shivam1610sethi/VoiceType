@@ -1,0 +1,12 @@
+{
+  "/Users/shivamsethi/Documents/Personal Projects/VoiceType/build/Build/Intermediates.noindex/swift-transformers.build/Release/Hub.build/DerivedSources/resource_bundle_accessor.swift" : {
+    "abi-baseline-json" : "/Users/shivamsethi/Documents/Personal Projects/VoiceType/build/Build/Intermediates.noindex/swift-transformers.build/Release/Hub.build/Objects-normal/arm64/Hub.abi.json",
+    "const-values" : "/Users/shivamsethi/Documents/Personal Projects/VoiceType/build/Build/Intermediates.noindex/swift-transformers.build/Release/Hub.build/Objects-normal/arm64/Hub-primary.swiftconstvalues",
+    "dependencies" : "/Users/shivamsethi/Documents/Personal Projects/VoiceType/build/Build/Intermediates.noindex/swift-transformers.build/Release/Hub.build/Objects-normal/arm64/Hub-primary.d",
+    "diagnostics" : "/Users/shivamsethi/Documents/Personal Projects/VoiceType/build/Build/Intermediates.noindex/swift-transformers.build/Release/Hub.build/Objects-normal/arm64/Hub-primary.dia",
+    "objc-header" : "/Users/shivamsethi/Documents/Personal Projects/VoiceType/build/Build/Intermediates.noindex/swift-transformers.build/Release/Hub.build/Objects-normal/arm64/Hub-Swift.h",
+    "swiftdoc" : "/Users/shivamsethi/Documents/Personal Projects/VoiceType/build/Build/Intermediates.noindex/swift-transformers.build/Release/Hub.build/Objects-normal/arm64/Hub.swiftdoc",
+    "swiftmodule" : "/Users/shivamsethi/Documents/Personal Projects/VoiceType/build/Build/Intermediates.noindex/swift-transformers.build/Release/Hub.build/Objects-normal/arm64/Hub.swiftmodule",
+    "swiftsourceinfo" : "/Users/shivamsethi/Documents/Personal Projects/VoiceType/build/Build/Intermediates.noindex/swift-transformers.build/Release/Hub.build/Objects-normal/arm64/Hub.swiftsourceinfo"
+  }
+}

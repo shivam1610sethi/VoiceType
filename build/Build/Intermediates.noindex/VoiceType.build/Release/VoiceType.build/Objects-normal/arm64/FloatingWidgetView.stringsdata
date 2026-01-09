@@ -1,0 +1,40 @@
+{
+  "source": "/Users/shivamsethi/Documents/Personal Projects/VoiceType/VoiceType/Views/FloatingWidgetView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Click or hold",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 42
+        }
+      },
+      {
+        "comment": "",
+        "key": "fn",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 44
+        }
+      },
+      {
+        "comment": "",
+        "key": "to dictate",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 47
+        }
+      },
+      {
+        "comment": "",
+        "key": "Transcribing",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 152
+        }
+      }
+    ]
+  },
+  "version": 1
+}

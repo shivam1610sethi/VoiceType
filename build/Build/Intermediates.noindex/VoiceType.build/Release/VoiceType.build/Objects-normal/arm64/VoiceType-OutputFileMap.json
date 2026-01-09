@@ -1,0 +1,91 @@
+{
+  "" : {
+    "const-values" : "/Users/shivamsethi/Documents/Personal Projects/VoiceType/build/Build/Intermediates.noindex/VoiceType.build/Release/VoiceType.build/Objects-normal/arm64/VoiceType-primary.swiftconstvalues",
+    "dependencies" : "/Users/shivamsethi/Documents/Personal Projects/VoiceType/build/Build/Intermediates.noindex/VoiceType.build/Release/VoiceType.build/Objects-normal/arm64/VoiceType-primary.d",
+    "diagnostics" : "/Users/shivamsethi/Documents/Personal Projects/VoiceType/build/Build/Intermediates.noindex/VoiceType.build/Release/VoiceType.build/Objects-normal/arm64/VoiceType-primary.dia",
+    "emit-module-dependencies" : "/Users/shivamsethi/Documents/Personal Projects/VoiceType/build/Build/Intermediates.noindex/VoiceType.build/Release/VoiceType.build/Objects-normal/arm64/VoiceType-primary-emit-module.d",
+    "emit-module-diagnostics" : "/Users/shivamsethi/Documents/Personal Projects/VoiceType/build/Build/Intermediates.noindex/VoiceType.build/Release/VoiceType.build/Objects-normal/arm64/VoiceType-primary-emit-module.dia",
+    "pch" : "/Users/shivamsethi/Documents/Personal Projects/VoiceType/build/Build/Intermediates.noindex/VoiceType.build/Release/VoiceType.build/Objects-normal/arm64/VoiceType-primary-Bridging-header.pch",
+    "swift-dependencies" : "/Users/shivamsethi/Documents/Personal Projects/VoiceType/build/Build/Intermediates.noindex/VoiceType.build/Release/VoiceType.build/Objects-normal/arm64/VoiceType-primary.swiftdeps"
+  },
+  "/Users/shivamsethi/Documents/Personal Projects/VoiceType/VoiceType/App/AppDelegate.swift" : {
+    "index-unit-output-path" : "/VoiceType.build/Release/VoiceType.build/Objects-normal/arm64/AppDelegate.o",
+    "llvm-bc" : "/Users/shivamsethi/Documents/Personal Projects/VoiceType/build/Build/Intermediates.noindex/VoiceType.build/Release/VoiceType.build/Objects-normal/arm64/AppDelegate.bc",
+    "object" : "/Users/shivamsethi/Documents/Personal Projects/VoiceType/build/Build/Intermediates.noindex/VoiceType.build/Release/VoiceType.build/Objects-normal/arm64/AppDelegate.o"
+  },
+  "/Users/shivamsethi/Documents/Personal Projects/VoiceType/VoiceType/App/AppState.swift" : {
+    "index-unit-output-path" : "/VoiceType.build/Release/VoiceType.build/Objects-normal/arm64/AppState.o",
+    "llvm-bc" : "/Users/shivamsethi/Documents/Personal Projects/VoiceType/build/Build/Intermediates.noindex/VoiceType.build/Release/VoiceType.build/Objects-normal/arm64/AppState.bc",
+    "object" : "/Users/shivamsethi/Documents/Personal Projects/VoiceType/build/Build/Intermediates.noindex/VoiceType.build/Release/VoiceType.build/Objects-normal/arm64/AppState.o"
+  },
+  "/Users/shivamsethi/Documents/Personal Projects/VoiceType/VoiceType/App/VoiceTypeApp.swift" : {
+    "index-unit-output-path" : "/VoiceType.build/Release/VoiceType.build/Objects-normal/arm64/VoiceTypeApp.o",
+    "llvm-bc" : "/Users/shivamsethi/Documents/Personal Projects/VoiceType/build/Build/Intermediates.noindex/VoiceType.build/Release/VoiceType.build/Objects-normal/arm64/VoiceTypeApp.bc",
+    "object" : "/Users/shivamsethi/Documents/Personal Projects/VoiceType/build/Build/Intermediates.noindex/VoiceType.build/Release/VoiceType.build/Objects-normal/arm64/VoiceTypeApp.o"
+  },
+  "/Users/shivamsethi/Documents/Personal Projects/VoiceType/VoiceType/Services/AudioRecorder.swift" : {
+    "index-unit-output-path" : "/VoiceType.build/Release/VoiceType.build/Objects-normal/arm64/AudioRecorder.o",
+    "llvm-bc" : "/Users/shivamsethi/Documents/Personal Projects/VoiceType/build/Build/Intermediates.noindex/VoiceType.build/Release/VoiceType.build/Objects-normal/arm64/AudioRecorder.bc",
+    "object" : "/Users/shivamsethi/Documents/Personal Projects/VoiceType/build/Build/Intermediates.noindex/VoiceType.build/Release/VoiceType.build/Objects-normal/arm64/AudioRecorder.o"
+  },
+  "/Users/shivamsethi/Documents/Personal Projects/VoiceType/VoiceType/Services/HotkeyMonitor.swift" : {
+    "index-unit-output-path" : "/VoiceType.build/Release/VoiceType.build/Objects-normal/arm64/HotkeyMonitor.o",
+    "llvm-bc" : "/Users/shivamsethi/Documents/Personal Projects/VoiceType/build/Build/Intermediates.noindex/VoiceType.build/Release/VoiceType.build/Objects-normal/arm64/HotkeyMonitor.bc",
+    "object" : "/Users/shivamsethi/Documents/Personal Projects/VoiceType/build/Build/Intermediates.noindex/VoiceType.build/Release/VoiceType.build/Objects-normal/arm64/HotkeyMonitor.o"
+  },
+  "/Users/shivamsethi/Documents/Personal Projects/VoiceType/VoiceType/Services/PermissionsManager.swift" : {
+    "index-unit-output-path" : "/VoiceType.build/Release/VoiceType.build/Objects-normal/arm64/PermissionsManager.o",
+    "llvm-bc" : "/Users/shivamsethi/Documents/Personal Projects/VoiceType/build/Build/Intermediates.noindex/VoiceType.build/Release/VoiceType.build/Objects-normal/arm64/PermissionsManager.bc",
+    "object" : "/Users/shivamsethi/Documents/Personal Projects/VoiceType/build/Build/Intermediates.noindex/VoiceType.build/Release/VoiceType.build/Objects-normal/arm64/PermissionsManager.o"
+  },
+  "/Users/shivamsethi/Documents/Personal Projects/VoiceType/VoiceType/Services/SpeechRecognizer.swift" : {
+    "index-unit-output-path" : "/VoiceType.build/Release/VoiceType.build/Objects-normal/arm64/SpeechRecognizer.o",
+    "llvm-bc" : "/Users/shivamsethi/Documents/Personal Projects/VoiceType/build/Build/Intermediates.noindex/VoiceType.build/Release/VoiceType.build/Objects-normal/arm64/SpeechRecognizer.bc",
+    "object" : "/Users/shivamsethi/Documents/Personal Projects/VoiceType/build/Build/Intermediates.noindex/VoiceType.build/Release/VoiceType.build/Objects-normal/arm64/SpeechRecognizer.o"
+  },
+  "/Users/shivamsethi/Documents/Personal Projects/VoiceType/VoiceType/Services/TextInjector.swift" : {
+    "index-unit-output-path" : "/VoiceType.build/Release/VoiceType.build/Objects-normal/arm64/TextInjector.o",
+    "llvm-bc" : "/Users/shivamsethi/Documents/Personal Projects/VoiceType/build/Build/Intermediates.noindex/VoiceType.build/Release/VoiceType.build/Objects-normal/arm64/TextInjector.bc",
+    "object" : "/Users/shivamsethi/Documents/Personal Projects/VoiceType/build/Build/Intermediates.noindex/VoiceType.build/Release/VoiceType.build/Objects-normal/arm64/TextInjector.o"
+  },
+  "/Users/shivamsethi/Documents/Personal Projects/VoiceType/VoiceType/Utilities/Constants.swift" : {
+    "index-unit-output-path" : "/VoiceType.build/Release/VoiceType.build/Objects-normal/arm64/Constants.o",
+    "llvm-bc" : "/Users/shivamsethi/Documents/Personal Projects/VoiceType/build/Build/Intermediates.noindex/VoiceType.build/Release/VoiceType.build/Objects-normal/arm64/Constants.bc",
+    "object" : "/Users/shivamsethi/Documents/Personal Projects/VoiceType/build/Build/Intermediates.noindex/VoiceType.build/Release/VoiceType.build/Objects-normal/arm64/Constants.o"
+  },
+  "/Users/shivamsethi/Documents/Personal Projects/VoiceType/VoiceType/Utilities/Extensions.swift" : {
+    "index-unit-output-path" : "/VoiceType.build/Release/VoiceType.build/Objects-normal/arm64/Extensions.o",
+    "llvm-bc" : "/Users/shivamsethi/Documents/Personal Projects/VoiceType/build/Build/Intermediates.noindex/VoiceType.build/Release/VoiceType.build/Objects-normal/arm64/Extensions.bc",
+    "object" : "/Users/shivamsethi/Documents/Personal Projects/VoiceType/build/Build/Intermediates.noindex/VoiceType.build/Release/VoiceType.build/Objects-normal/arm64/Extensions.o"
+  },
+  "/Users/shivamsethi/Documents/Personal Projects/VoiceType/VoiceType/Views/FloatingPanel.swift" : {
+    "index-unit-output-path" : "/VoiceType.build/Release/VoiceType.build/Objects-normal/arm64/FloatingPanel.o",
+    "llvm-bc" : "/Users/shivamsethi/Documents/Personal Projects/VoiceType/build/Build/Intermediates.noindex/VoiceType.build/Release/VoiceType.build/Objects-normal/arm64/FloatingPanel.bc",
+    "object" : "/Users/shivamsethi/Documents/Personal Projects/VoiceType/build/Build/Intermediates.noindex/VoiceType.build/Release/VoiceType.build/Objects-normal/arm64/FloatingPanel.o"
+  },
+  "/Users/shivamsethi/Documents/Personal Projects/VoiceType/VoiceType/Views/FloatingWidgetView.swift" : {
+    "index-unit-output-path" : "/VoiceType.build/Release/VoiceType.build/Objects-normal/arm64/FloatingWidgetView.o",
+    "llvm-bc" : "/Users/shivamsethi/Documents/Personal Projects/VoiceType/build/Build/Intermediates.noindex/VoiceType.build/Release/VoiceType.build/Objects-normal/arm64/FloatingWidgetView.bc",
+    "object" : "/Users/shivamsethi/Documents/Personal Projects/VoiceType/build/Build/Intermediates.noindex/VoiceType.build/Release/VoiceType.build/Objects-normal/arm64/FloatingWidgetView.o"
+  },
+  "/Users/shivamsethi/Documents/Personal Projects/VoiceType/VoiceType/Views/MenuBarController.swift" : {
+    "index-unit-output-path" : "/VoiceType.build/Release/VoiceType.build/Objects-normal/arm64/MenuBarController.o",
+    "llvm-bc" : "/Users/shivamsethi/Documents/Personal Projects/VoiceType/build/Build/Intermediates.noindex/VoiceType.build/Release/VoiceType.build/Objects-normal/arm64/MenuBarController.bc",
+    "object" : "/Users/shivamsethi/Documents/Personal Projects/VoiceType/build/Build/Intermediates.noindex/VoiceType.build/Release/VoiceType.build/Objects-normal/arm64/MenuBarController.o"
+  },
+  "/Users/shivamsethi/Documents/Personal Projects/VoiceType/VoiceType/Views/OnboardingView.swift" : {
+    "index-unit-output-path" : "/VoiceType.build/Release/VoiceType.build/Objects-normal/arm64/OnboardingView.o",
+    "llvm-bc" : "/Users/shivamsethi/Documents/Personal Projects/VoiceType/build/Build/Intermediates.noindex/VoiceType.build/Release/VoiceType.build/Objects-normal/arm64/OnboardingView.bc",
+    "object" : "/Users/shivamsethi/Documents/Personal Projects/VoiceType/build/Build/Intermediates.noindex/VoiceType.build/Release/VoiceType.build/Objects-normal/arm64/OnboardingView.o"
+  },
+  "/Users/shivamsethi/Documents/Personal Projects/VoiceType/VoiceType/Views/SettingsView.swift" : {
+    "index-unit-output-path" : "/VoiceType.build/Release/VoiceType.build/Objects-normal/arm64/SettingsView.o",
+    "llvm-bc" : "/Users/shivamsethi/Documents/Personal Projects/VoiceType/build/Build/Intermediates.noindex/VoiceType.build/Release/VoiceType.build/Objects-normal/arm64/SettingsView.bc",
+    "object" : "/Users/shivamsethi/Documents/Personal Projects/VoiceType/build/Build/Intermediates.noindex/VoiceType.build/Release/VoiceType.build/Objects-normal/arm64/SettingsView.o"
+  },
+  "/Users/shivamsethi/Documents/Personal Projects/VoiceType/build/Build/Intermediates.noindex/VoiceType.build/Release/VoiceType.build/DerivedSources/GeneratedAssetSymbols.swift" : {
+    "index-unit-output-path" : "/VoiceType.build/Release/VoiceType.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "llvm-bc" : "/Users/shivamsethi/Documents/Personal Projects/VoiceType/build/Build/Intermediates.noindex/VoiceType.build/Release/VoiceType.build/Objects-normal/arm64/GeneratedAssetSymbols.bc",
+    "object" : "/Users/shivamsethi/Documents/Personal Projects/VoiceType/build/Build/Intermediates.noindex/VoiceType.build/Release/VoiceType.build/Objects-normal/arm64/GeneratedAssetSymbols.o"
+  }
+}
