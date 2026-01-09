@@ -36,9 +36,9 @@ struct IdlePillView: View {
     
     var body: some View {
         Button(action: onTap) {
-            HStack {
+            HStack(spacing: 4) {
                 if isHovered {
-                    HStack(spacing: 4) {
+                    HStack(spacing: 3) {
                         Text("Click or hold")
                             .foregroundColor(.white.opacity(0.8))
                         Text("fn")
@@ -47,14 +47,15 @@ struct IdlePillView: View {
                         Text("to dictate")
                             .foregroundColor(.white.opacity(0.8))
                     }
-                    .font(.system(size: 12, weight: .medium))
+                    .font(.system(size: 10, weight: .medium)) // Scale down from 12
                 } else {
                     Image(systemName: "waveform")
-                        .font(.system(size: 16))
+                        .font(.system(size: 12)) // Scale down from 16
                         .foregroundColor(.white.opacity(0.7))
                 }
             }
-            .frame(width: isHovered ? 180 : 80, height: 44)
+            // Scale down width: 80->45, 180->120
+            .frame(width: isHovered ? 130 : 45, height: 22)
             .background(
                 Capsule()
                     .fill(Color.black.opacity(0.85))
@@ -81,43 +82,43 @@ struct RecordingPillView: View {
     let onStop: () -> Void
     
     var body: some View {
-        HStack(spacing: 12) {
+        HStack(spacing: 8) { // Reduced spacing 12->8
             // Cancel button
             Button(action: onCancel) {
                 Image(systemName: "xmark")
-                    .font(.system(size: 12, weight: .bold))
+                    .font(.system(size: 8, weight: .bold)) // Scale down 12->8
                     .foregroundColor(.white)
             }
             .buttonStyle(.plain)
-            .frame(width: 28, height: 28)
+            .frame(width: 16, height: 16) // Scale down 28->16
             .background(Circle().fill(Color.white.opacity(0.2)))
             
             // Audio waveform visualization
-            HStack(spacing: 3) {
+            HStack(spacing: 2) { // Spacing 3->2
                 ForEach(0..<8, id: \.self) { index in
-                    RoundedRectangle(cornerRadius: 2)
+                    RoundedRectangle(cornerRadius: 1)
                         .fill(Color.white.opacity(0.9))
-                        .frame(width: 3, height: waveHeight(for: index))
+                        .frame(width: 2, height: waveHeight(for: index)) // Width 3->2
                 }
             }
-            .frame(width: 50, height: 24)
+            .frame(width: 34, height: 14) // Scale container
             
             // Stop/Finish button
             Button(action: onStop) {
                 ZStack {
                     Circle()
                         .fill(Color.white.opacity(0.2))
-                        .frame(width: 28, height: 28)
+                        .frame(width: 16, height: 16) // Scale 28->16
                     
-                    RoundedRectangle(cornerRadius: 3)
+                    RoundedRectangle(cornerRadius: 2)
                         .fill(Color.white)
-                        .frame(width: 12, height: 12)
+                        .frame(width: 6, height: 6) // Scale 12->6
                 }
             }
             .buttonStyle(.plain)
         }
-        .frame(height: 44)
-        .padding(.horizontal, 14)
+        .frame(height: 22) // Scale 44->22
+        .padding(.horizontal, 8) // Padding 14->8
         .background(
             Capsule()
                 .fill(Color.black.opacity(0.9))
@@ -129,8 +130,8 @@ struct RecordingPillView: View {
     }
     
     private func waveHeight(for index: Int) -> CGFloat {
-        let baseHeight: CGFloat = 6
-        let maxAddition: CGFloat = 14
+        let baseHeight: CGFloat = 3 // Scale 6->3
+        let maxAddition: CGFloat = 8 // Scale 14->8
         let normalizedLevel = CGFloat(min(audioLevel * 3, 1.0))
         
         // Create pseudo-random wave pattern
@@ -147,16 +148,16 @@ struct TranscribingPillView: View {
     @State private var animating = false
     
     var body: some View {
-        HStack(spacing: 6) {
+        HStack(spacing: 4) { // Spacing 6->4
             Text("Transcribing")
-                .font(.system(size: 13, weight: .medium))
+                .font(.system(size: 10, weight: .medium)) // Scale 13->10
                 .foregroundColor(.white)
             
-            HStack(spacing: 4) {
+            HStack(spacing: 2) { // Spacing 4->2
                 ForEach(0..<3, id: \.self) { index in
                     Circle()
                         .fill(Color.white)
-                        .frame(width: 5, height: 5)
+                        .frame(width: 3, height: 3) // Scale 5->3
                         .opacity(animating ? 1 : 0.3)
                         .animation(
                             Animation.easeInOut(duration: 0.5)
@@ -167,8 +168,8 @@ struct TranscribingPillView: View {
                 }
             }
         }
-        .frame(height: 44)
-        .padding(.horizontal, 18)
+        .frame(height: 22) // Scale 44->22
+        .padding(.horizontal, 10) // Padding 18->10
         .background(
             Capsule()
                 .fill(Color.black.opacity(0.9))
@@ -190,24 +191,25 @@ struct ErrorPillView: View {
     let onDismiss: () -> Void
     
     var body: some View {
-        HStack(spacing: 10) {
+        HStack(spacing: 6) { // Spacing 10->6
             Image(systemName: "exclamationmark.triangle.fill")
+                .font(.system(size: 10)) // Scale defaults->10
                 .foregroundColor(.white.opacity(0.7))
             
             Text(message)
-                .font(.system(size: 12, weight: .medium))
+                .font(.system(size: 10, weight: .medium)) // Scale 12->10
                 .foregroundColor(.white)
                 .lineLimit(1)
             
             Button(action: onDismiss) {
                 Image(systemName: "xmark")
-                    .font(.system(size: 10, weight: .bold))
+                    .font(.system(size: 8, weight: .bold)) // Scale 10->8
                     .foregroundColor(.white.opacity(0.7))
             }
             .buttonStyle(.plain)
         }
-        .frame(height: 44)
-        .padding(.horizontal, 14)
+        .frame(height: 22) // Scale 44->22
+        .padding(.horizontal, 8) // Padding 14->8
         .background(
             Capsule()
                 .fill(Color.black.opacity(0.9))
